@@ -25,7 +25,6 @@ try
         console.log(`new connection address => ${socket.remoteAddress}:${socket.remotePort}`);
 
         socket.on('data', buffer => {
-            // const request: string = buffer.toString();
             const request: Request = parseRequest(buffer.toString());
 
             workerPool.exec((params: Request) => JSON.stringify(params), [request])
