@@ -1,4 +1,4 @@
-interface Response {
+interface IResponse {
     status: string,
     statusCode: number;
     protocol: string,
@@ -6,4 +6,4 @@ interface Response {
     body: string
 }
 
-export default Response;
+export default IResponse;

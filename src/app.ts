@@ -2,7 +2,7 @@
 import * as net from 'net';
 import * as wp from 'workerpool';
 // local imports
-import Request from './structs/request';
+import IRequest from './structs/request';
 import { parseRequest } from './helpers/requestHelper.js';
 import { composeResponse } from './helpers/responseHelper.js';
 import { ejectMaySage } from './helpers/appHelper.js';
@@ -25,9 +25,9 @@ try
         console.log(`new connection address => ${socket.remoteAddress}:${socket.remotePort}`);
 
         socket.on('data', buffer => {
-            const request: Request = parseRequest(buffer.toString());
+            const request: IRequest = parseRequest(buffer.toString());
 
-            workerPool.exec((params: Request) => JSON.stringify(params), [request])
+            workerPool.exec((params: IRequest) => JSON.stringify(params), [request])
                 .then(res => {
                     console.log(`res => ${res}`);
 

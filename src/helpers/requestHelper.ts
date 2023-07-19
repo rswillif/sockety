@@ -1,4 +1,4 @@
-import Request from '../structs/request';
+import IRequest from '../structs/request';
 
 function parseRequestLine(str: string, target: string): [string, string] {
     const index: number = str.indexOf(target);
@@ -8,7 +8,7 @@ function parseRequestLine(str: string, target: string): [string, string] {
     return [first, rest];
 }
 
-export function parseRequest(str: string): Request {
+export function parseRequest(str: string): IRequest {
     const [firstLine, rest]: [string, string] = parseRequestLine(str, '\r\n');
     const [method, url, protocol]: string[] = firstLine.split(' ');
     const [headers, body]: string[] = parseRequestLine(rest, '\r\n\r\n');

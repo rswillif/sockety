@@ -1,4 +1,4 @@
-interface Request {
+interface IRequest {
     protocol?: string,
     method?: string,
     url?: string,
@@ -6,4 +6,4 @@ interface Request {
     body?: string
 }
 
-export default Request;
+export default IRequest;
